@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="ECCO: Can We Improve Model-Generated Code Efficiency Without Sacrificing Functional Correctness?">
+  <meta name="keywords" content="code generation efficiency">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ECCO: Can We Improve Model-Generated Code Efficiency Without Sacrificing Functional Correctness?</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">ECCO: Can We Improve Model-Generated Code Efficiency Without Sacrificing Functional Correctness?</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="#">Siddhant Waghjale</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="#">Vishruth Veerendranath</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="#">Zora Zhiruo Wang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">Daniel Fried</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Language Technologies Institute, Carnegie Mellon University</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup>Equal Contribution</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2407.14044"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/CodeEff/ECCO"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/EfficientCode/ECCO"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <img src="static/images/ecco-teaser.png" alt="ECCO Teaser Figure">
+        <br>
+        <br>
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Although large language models (LLMs) have been largely successful in generating functionally correct programs, conditioning models to produce efficient solutions while ensuring correctness remains a challenge. Further, unreliability in benchmarking code efficiency is a hurdle across varying hardware specifications for popular interpreted languages such as Python. In this paper, we present ECCO, a reproducible benchmark for evaluating program efficiency via two paradigms: natural language (NL) based code generation and history-based code editing. On ECCO, we adapt and thoroughly investigate the three most promising existing LLM-based approaches: in-context learning, iterative refinement with execution or NL feedback, and fine-tuning conditioned on execution and editing history. While most methods degrade functional correctness and moderately increase program efficiency, we find that adding execution information often helps maintain functional correctness, and NL feedback enhances more on efficiency. We release our benchmark to support future work on LLM-based generation of efficient code.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">ECCO Benchmark</h2>
+    <p class="has-text-centered mb-6">
+      In ECCO, we evaluate both <b>runtime and memory efficiency</b> of programs across 2 paradigms.
+    </p>
+    
+    <div class="columns is-centered">
+      <div class="column">
+        <h4 class="subtitle is-4 has-text-centered">1. History-based code editing</h4>
+        <p class="has-text-justified">We evaluate the efficiency of programs generated by LLMs using execution and editing history.</p>
+        <div class="has-text-centered my-4">
+          <img src="./static/images/history-based-edit.png" alt="History-based editing" style="max-width: 100%; height: auto;">
+        </div>
+        <p class="has-text-justified mt-4">We extend the relative efficiency metrics from <a href="https://pie4perf.com/">PIE (Shypula, 2024)</a> to both memory and runtime:</p>
+        <div class="has-text-centered mt-4">
+          $$Speedup = \frac{\text{Runtime of $p_{in}$}}{\text{Runtime of $p_{out}$}}$$
+          $$Memory\ Reduction = \frac{\text{Memory of $p_{in}$}}{\text{Memory of $p_{out}$}}$$
+        </div>
+      </div>
+      
+      <div class="column">
+        <h4 class="subtitle is-4 has-text-centered">2. Natural Language (NL) instructed code generation</h4>
+        <p class="has-text-justified">We evaluate the efficiency of programs generated by large language models (LLMs) using NL prompts. This method explores how well LLMs can interpret and implement efficiency instructions given in natural language.</p>
+        <div class="has-text-centered my-4">
+          <img src="./static/images/nl-instructed-gen.png" alt="NL Instructed Generation" style="max-width: 100%; height: auto;">
+        </div>
+        <p class="has-text-justified mt-4">We introduce relative efficiency metrics which compare generated code against a <b>spectrum of user submitted solutions</b>. This allows us to know each model's efficiency characteristics:</p>
+        <div class="has-text-centered mt-4">
+          $$Runtime \% = \frac{\text{# Slower user programs}}{\text{Total # of user programs}}$$
+          $$Memory \% = \frac{\text{# Programs w/ more memory}}{\text{Total # of user programs}}$$
+        </div>
+        <p class="has-text-justified mt-4">By using these relative metrics, we can assess how our NL-instructed generations compare to human-written code in terms of both speed and memory efficiency.</p>
+      </div>
+    </div>
+  </div>
+    <!--/ ECCO Overview. -->
+
+    <!--Evaluation Setup. -->
+     <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Evaluation Setup</h2>
+        Measuring the efficiency reliably across different hardware and platforms is challenging especially for interpreted languages.
+        We propose using Judge0 which ensures the same virtual hardware and can measure correctness and efficiency with a simple API call, with support for over 60 programming languages.
+        <div class="content has-text-justified image-container">
+          <img src="./static/images/eval-setup.png" alt="Judge Setup" style="max-width: 50%; height: auto; display: block; margin: 0 auto;">
+        </div>
+      </div>
+    </div>
+    <!--/ Methodology. -->
+
+    <!-- Methodology. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Methods</h2>
+        <div class="content has-text-justified">
+          <p>
+            We explore three most promising classes of approaches:
+          </p>
+          <ol>
+            <li><strong>In-context learning</strong>: Sampling 2 examples from the train set randomly and including them in the prompt</li>
+            <li><strong>Iterative refinement</strong>
+              <ul>
+                <li><em>Self-Refine</em>: Refine code with self-generated feedback from the model</li>
+                <li><em>Execution-Refine</em>: Refine code based on raw execution results (correctness and efficiency) of the previous attempt</li>
+                <li><em>NL+Exec-Refine</em>: Reflect on the raw execution results in Natural Language, and use the reflection to refine the code</li>
+              </ul>
+            </li>
+            <li><strong>Fine-tuning</strong>
+              <ul>
+                <li><em>Pair Finetuning</em></li>
+                <li><em>Execution Conditioned Finetuning</em></li>
+                <li><em>Trajectory Finetuning</em></li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!--/ Methodology. -->
+
+    <!-- Results. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Results and Analysis</h2>
+        <div class="content has-text-justified">
+          <p>
+            [Placeholder for results and analysis content]
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Results. -->
+
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{waghjale2024ecco,
+      title={ECCO: Can We Improve Model-Generated Code Efficiency Without Sacrificing Functional Correctness?},
+      author={Waghjale, Siddhant and Veerendranath, Vishruth and Wang, Zora Zhiruo and Fried, Daniel},
+      journal={arXiv preprint arXiv:2407.14044},
+      year={2024}
+}</code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/your-github" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the source code of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

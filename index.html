@@ -66,12 +66,12 @@
             <span class="author-block">
               <a href="#">Siddhant Waghjale</a><sup>1*</sup>,</span>
             <span class="author-block">
-              <a href="#">Vishruth Veerendranath</a><sup>1*</sup>,</span>
+              <a href="https://vishruth-v.github.io/">Vishruth Veerendranath</a><sup>1*</sup>,</span>
             <span class="author-block">
-              <a href="#">Zora Zhiruo Wang</a><sup>1</sup>,
+              <a href="https://zorazrw.github.io/">Zora Zhiruo Wang</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="#">Daniel Fried</a><sup>1</sup>
+              <a href="https://dpfried.github.io/">Daniel Fried</a><sup>1</sup>
             </span>
           </div>
 
@@ -207,16 +207,16 @@
             <li><strong>In-context learning</strong>: Sampling 2 examples from the train set randomly and including them in the prompt</li>
             <li><strong>Iterative refinement</strong>
               <ul>
-                <li><em>Self-Refine</em>: Refine code with self-generated feedback from the model</li>
+                <li><em>Self-Refine</em>: Refine code with self-generated Natural Language (NL) feedback from the model</li>
                 <li><em>Execution-Refine</em>: Refine code based on raw execution results (correctness and efficiency) of the previous attempt</li>
                 <li><em>NL+Exec-Refine</em>: Reflect on the raw execution results in Natural Language, and use the reflection to refine the code</li>
               </ul>
             </li>
             <li><strong>Fine-tuning</strong>
               <ul>
-                <li><em>Pair Finetuning</em></li>
-                <li><em>Execution Conditioned Finetuning</em></li>
-                <li><em>Trajectory Finetuning</em></li>
+                <li><em>Pair Finetuning</em>: Finetune on pairs of slow & fast programs</li>
+                <li><em>Execution Conditioned Finetuning</em>: Additional context of the raw execution feedback (from <em>exec-refine</em>) for both slow & fast programs</li>
+                <li><em>Trajectory Finetuning</em>: In addition to slow -> fast, we include 3 intermediate user improvements to learn finer grained optimizations</li>
               </ul>
             </li>
           </ol>
@@ -231,8 +231,17 @@
         <h2 class="title is-3">Results and Analysis</h2>
         <div class="content has-text-justified">
           <p>
-            [Placeholder for results and analysis content]
+            <strong>In-Context Learning:</strong> Comparing the two paradigms, history-based editing results in a substantially higher pass@1 by referring to a base correct program, compared to NL-instructed generation which lacks a base program to start from.
           </p>
+          <img src="./static/images/results-incontext.png" alt="In-context learning results" style="max-width: 70%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+          <p>
+            <strong>Iterative-Refinement:</strong> Methods that involve NL feedback (<em>self-refine</em> and <em>nl+exec refine</em>) achieve the highest speedup across models, whereas raw excution results (<em>exec-refine</em>) can maintain correctness better while optimizing. We conjecture that execution outputs are better representations to inform functional correctness than NL descriptions, while it is easier to convey high-level optimization strategies in NL. 
+          </p>
+          <img src="./static/images/results-refinement.png" alt="Refinement results" style="max-width: 70%; height: auto; display: block; margin-left: auto; margin-right: auto;">
+          <p>
+            Multiple iterations of iterative-refinement leads to a consistent decrease in pass@1 which highlights the need for more robust methods that emphasize <strong>correctness-preserving optimizations</strong>.
+          </p>
+          <img src="./static/images/results-refinement-graphs.png" alt="Multiple refinement iterations" style="max-width: 80%; height: auto; display: block; margin-left: auto; margin-right: auto;">
         </div>
       </div>
     </div>
